@@ -42,6 +42,9 @@ function explore(path, move) {
         const test = { path: [...path], move: unexploredMove };
         tests.enqueue(test);
     }
+
+    ({ path, move } = tests.dequeue());
+    return explore(path, move);
 }
 
 function getUnexploredMoves() {
