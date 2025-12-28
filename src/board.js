@@ -6,8 +6,17 @@ function contains(...positions) {
     );
 }
 
+function samePosition(...positions) {
+    const [firstRank, firstFile] = positions[0];
+
+    return positions.every(
+        ([rank, file]) => rank === firstRank && file == firstFile,
+    );
+}
+
 const board = {
     contains,
+    samePosition,
 };
 
 export default board;
