@@ -4,7 +4,7 @@ function getShortestPath(board, knight, start, end) {
     validatePositions(board, start, end);
     goal = end;
     knight.position = start;
-    return test(board, knight, end);
+    return test(board, knight);
 }
 
 function validatePositions(board, ...positions) {
