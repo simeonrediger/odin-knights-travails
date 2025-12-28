@@ -1,5 +1,6 @@
 function getShortestPath(board, knight, start, end) {
     validatePositions(board, start, end);
+    knight.position = start;
 }
 
 function validatePositions(board, ...positions) {
