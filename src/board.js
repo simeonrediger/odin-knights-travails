@@ -15,6 +15,7 @@ function samePosition(...positions) {
 }
 
 const board = {
+    size,
     contains,
     samePosition,
 };
