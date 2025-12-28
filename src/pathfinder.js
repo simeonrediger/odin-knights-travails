@@ -21,7 +21,7 @@ function validatePositions(board, ...positions) {
     }
 }
 
-function test(board, knight, end) {}
+function test(path) {}
 
 const pathfinder = {
     getShortestPath,
