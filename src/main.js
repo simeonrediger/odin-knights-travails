@@ -9,4 +9,4 @@ const end = [1, 2];
 const path = pathfinder.getShortestPath(board, knight, start, end);
 
 console.log('Path:', path);
-console.log('Length:', path.length);
+console.log('Moves:', path.length - 1);
