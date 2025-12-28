@@ -12,4 +12,6 @@ function validatePositions(board, ...positions) {
     }
 }
 
-function pathfind(board, knight, start, end) {}
+function pathfind(board, knight, start, end, visited = []) {
+    visited.push(knight.position);
+}
