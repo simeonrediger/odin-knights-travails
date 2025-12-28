@@ -12,6 +12,7 @@ function getShortestPath(chessBoard, knightPiece, start, end) {
     knight = knightPiece;
     goal = end;
     const path = [start];
+    visited.push(start);
     return explore(path);
 }
 
