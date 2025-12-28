@@ -21,7 +21,13 @@ function validatePositions(board, ...positions) {
     }
 }
 
-function explore(path, move) {}
+function explore(path) {
+    const currentPosition = path[path.length - 1];
+
+    if (board.samePosition(currentPosition, goal)) {
+        return path;
+    }
+}
 
 const pathfinder = {
     getShortestPath,
