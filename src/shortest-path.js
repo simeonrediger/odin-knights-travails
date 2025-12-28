@@ -24,20 +24,12 @@ function getUnexploredMoves(board, knight, visited) {
             knight.position[1] + move[1],
         ];
 
-        const possible =
-            newPosition[0] >= 0 &&
-            newPosition[0] < board.size &&
-            newPosition[1] >= 0 &&
-            newPosition[1] < board.size;
-
-        if (!possible) {
+        if (!board.contains(newPosition)) {
             return false;
         }
 
-        const alreadyVisited = visited.some(
-            visitedPosition =>
-                newPosition[0] === visitedPosition[0] &&
-                newPosition[1] === visitedPosition[1],
+        const alreadyVisited = visited.some(visitedPosition =>
+            board.samePosition(visitedPosition, newPosition),
         );
 
         return !alreadyVisited;
