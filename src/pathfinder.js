@@ -1,6 +1,7 @@
 function getShortestPath(board, knight, start, end) {
     validatePositions(board, start, end);
     knight.position = start;
+    return test(board, knight, end);
 }
 
 function validatePositions(board, ...positions) {
@@ -10,6 +11,8 @@ function validatePositions(board, ...positions) {
         );
     }
 }
+
+function test(board, knight, end) {}
 
 const pathfinder = {
     getShortestPath,
