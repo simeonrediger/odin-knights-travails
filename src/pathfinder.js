@@ -1,10 +1,10 @@
 let goal;
 
-function getShortestPath(board, knight, start, end) {
+function getShortestPath(board, start, end) {
     validatePositions(board, start, end);
     goal = end;
-    knight.position = start;
-    return test(board, knight);
+    const path = [start];
+    return test(board, path);
 }
 
 function validatePositions(board, ...positions) {
