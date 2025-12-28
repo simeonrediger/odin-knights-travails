@@ -4,7 +4,7 @@ let board;
 let knight;
 let goal;
 let visited = [];
-let testPaths = new Queue();
+let tests = new Queue();
 
 function getShortestPath(chessBoard, knightPiece, start, end) {
     validatePositions(chessBoard, start, end);
