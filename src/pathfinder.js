@@ -31,6 +31,24 @@ function explore(path, move = [0, 0]) {
     if (board.samePosition(knight.position, goal)) {
         return path;
     }
+
+    const unexploredMoves = getUnexploredMoves();
+}
+
+function getUnexploredMoves() {
+    return knight.moveset.filter(move => {
+        const newPosition = knight.computePosition(move);
+
+        if (!board.contains(newPosition)) {
+            return false;
+        }
+
+        const alreadyVisited = visited.some(visitedPosition =>
+            board.samePosition(visitedPosition, newPosition),
+        );
+
+        return !alreadyVisited;
+    });
 }
 
 const pathfinder = {
