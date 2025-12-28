@@ -10,7 +10,7 @@ function getShortestPath(chessBoard, start, end) {
     board = chessBoard;
     goal = end;
     const path = [start];
-    return test(path);
+    return explore(path);
 }
 
 function validatePositions(board, ...positions) {
@@ -21,7 +21,7 @@ function validatePositions(board, ...positions) {
     }
 }
 
-function test(path) {}
+function explore(path, move) {}
 
 const pathfinder = {
     getShortestPath,
