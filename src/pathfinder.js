@@ -24,10 +24,13 @@ function validatePositions(board, ...positions) {
     }
 }
 
-function explore(path, move = [0, 0]) {
+function explore(path, move) {
     knight.position = path[path.length - 1];
-    knight.applyMove(move);
-    path.push(knight.position);
+
+    if (move) {
+        knight.applyMove(move);
+        path.push(knight.position);
+    }
 
     if (board.samePosition(knight.position, goal)) {
         return path;
