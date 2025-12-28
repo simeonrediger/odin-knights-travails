@@ -24,9 +24,9 @@ function validatePositions(board, ...positions) {
 }
 
 function explore(path) {
-    const currentPosition = path[path.length - 1];
+    knight.position = path[path.length - 1];
 
-    if (board.samePosition(currentPosition, goal)) {
+    if (board.samePosition(knight.position, goal)) {
         return path;
     }
 }
