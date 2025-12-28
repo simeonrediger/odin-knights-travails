@@ -27,6 +27,7 @@ function validatePositions(board, ...positions) {
 function explore(path, move = [0, 0]) {
     knight.position = path[path.length - 1];
     knight.applyMove(move);
+    path.push(knight.position);
 
     if (board.samePosition(knight.position, goal)) {
         return path;
