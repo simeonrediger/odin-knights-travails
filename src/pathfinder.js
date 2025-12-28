@@ -1,5 +1,8 @@
+import Queue from './queue.js';
+
 let goal;
 let visited = [];
+let testPaths = new Queue();
 
 function getShortestPath(board, start, end) {
     validatePositions(board, start, end);
