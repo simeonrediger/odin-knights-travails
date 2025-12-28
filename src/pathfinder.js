@@ -1,13 +1,15 @@
 import Queue from './queue.js';
 
 let board;
+let knight;
 let goal;
 let visited = [];
 let testPaths = new Queue();
 
-function getShortestPath(chessBoard, start, end) {
+function getShortestPath(chessBoard, knightPiece, start, end) {
     validatePositions(chessBoard, start, end);
     board = chessBoard;
+    knight = knightPiece;
     goal = end;
     const path = [start];
     return explore(path);
