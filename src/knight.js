@@ -11,8 +11,13 @@ const moveset = Object.freeze([
     [-1, 2],
 ]);
 
+function computePosition(move) {
+    return [knight.position[0] + move[0], knight.position[1] + move[1]];
+}
+
 const knight = {
     moveset,
+    computePosition,
 
     get position() {
         return position;

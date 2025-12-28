@@ -19,10 +19,7 @@ function pathfind(board, knight, start, end, visited = []) {
 
 function getUnexploredMoves(board, knight, visited) {
     return knight.moveset.filter(move => {
-        const newPosition = [
-            knight.position[0] + move[0],
-            knight.position[1] + move[1],
-        ];
+        const newPosition = knight.computePosition(move);
 
         if (!board.contains(newPosition)) {
             return false;
