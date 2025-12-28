@@ -12,8 +12,8 @@ const moveset = Object.freeze([
 ]);
 
 function applyMove(move) {
-    knight.position[0] += move.position[0];
-    knight.position[1] += move.position[1];
+    knight.position[0] += move[0];
+    knight.position[1] += move[1];
 }
 
 function computePosition(move) {
