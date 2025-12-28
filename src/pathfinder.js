@@ -30,6 +30,7 @@ function explore(path, move) {
     if (move) {
         knight.applyMove(move);
         path.push(knight.position);
+        visited.push(knight.position);
     }
 
     if (board.samePosition(knight.position, goal)) {
