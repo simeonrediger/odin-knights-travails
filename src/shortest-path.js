@@ -14,10 +14,10 @@ function validatePositions(board, ...positions) {
 
 function pathfind(board, knight, start, end, visited = []) {
     visited.push(knight.position);
-    const uniquePossibleMoves = getUniquePossibleMoves(board, knight, visited);
+    const unexploredMoves = getUnexploredMoves(board, knight, visited);
 }
 
-function getUniquePossibleMoves(board, knight, visited) {
+function getUnexploredMoves(board, knight, visited) {
     return knight.moveset.filter(move => {
         const newPosition = [
             knight.position[0] + move[0],
