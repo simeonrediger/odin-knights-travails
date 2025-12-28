@@ -1,6 +1,7 @@
 export default function getShortestPath(board, knight, start, end) {
     validatePositions(board, start, end);
     knight.position = start;
+    return pathfind(board, knight, start, end);
 }
 
 function validatePositions(board, ...positions) {
@@ -10,3 +11,5 @@ function validatePositions(board, ...positions) {
         );
     }
 }
+
+function pathfind(board, knight, start, end) {}
