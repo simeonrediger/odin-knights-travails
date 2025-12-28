@@ -1,4 +1,5 @@
 let goal;
+let visited = [];
 
 function getShortestPath(board, start, end) {
     validatePositions(board, start, end);
