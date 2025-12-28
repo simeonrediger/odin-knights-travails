@@ -1,5 +1,4 @@
-let rank;
-let file;
+const position = [undefined, undefined];
 
 const moveset = Object.freeze([
     [1, 2],
@@ -13,9 +12,15 @@ const moveset = Object.freeze([
 ]);
 
 const knight = {
-    rank,
-    file,
     moveset,
+
+    get position() {
+        return position;
+    },
+
+    set position(newPosition) {
+        [position[0], position[1]] = newPosition;
+    },
 };
 
 export default knight;
