@@ -39,7 +39,7 @@ function explore(square) {
         discovered[neighbor.x][neighbor.y] = true;
     }
 
-    return explore(neighbors.dequeue());
+    return neighbors.size > 0 ? explore(neighbors.dequeue()) : null;
 }
 
 function getUndiscoveredNeighbors(square) {
