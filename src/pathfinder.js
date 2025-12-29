@@ -31,7 +31,6 @@ function explore({ path, move }) {
         path.push(knight.position);
     }
 
-    discovered.add(knight.position);
     positionsExplored++;
 
     if (board.samePosition(knight.position, goal)) {
@@ -43,6 +42,7 @@ function explore({ path, move }) {
     for (const unexploredMove of unexploredMoves) {
         const test = { path, move: unexploredMove };
         tests.enqueue(test);
+        discovered.add(knight.position);
     }
 
     return explore(tests.dequeue());
