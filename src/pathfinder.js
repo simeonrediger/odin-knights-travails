@@ -43,10 +43,10 @@ function decodePath(path) {
 
 function explore({ path, move }) {
     path = decodePath(path);
-    knight.position = decodePosition(path[path.length - 1]);
+    // knight.position = decodePosition(path[path.length - 1]);
 
     if (move) {
-        knight.applyMove(move);
+        // knight.applyMove(move);
         path.push(encodePosition(knight.position));
     }
 
