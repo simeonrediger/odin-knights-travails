@@ -5,8 +5,14 @@ import pathfinder from './pathfinder.js';
 console.clear();
 
 const start = [0, 0];
-const end = [1, 2];
-const path = pathfinder.run(board, knight, start, end);
+const end = [7, 7];
+const { path, moves, positionsExplored } = pathfinder.run(
+    board,
+    knight,
+    start,
+    end,
+);
 
 console.log('Path:', path);
-console.log('Moves:', path.length - 1);
+console.log('Moves:', moves);
+console.log('Positions explored:', positionsExplored);

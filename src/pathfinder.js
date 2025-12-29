@@ -3,6 +3,7 @@ import Queue from './queue.js';
 let board;
 let knight;
 let goal;
+let positionsExplored;
 let visited = new Set();
 let tests = new Queue();
 
@@ -11,10 +12,17 @@ function run(chessBoard, knightPiece, start, end) {
     board = chessBoard;
     knight = knightPiece;
     goal = end;
+    positionsExplored = 0;
     const encodedStart = encodePosition(start);
     const path = [encodedStart];
     visited.add(encodedStart);
-    return explore({ path: encodePath(path) });
+    const shortestPath = explore({ path: encodePath(path) });
+
+    return {
+        path: shortestPath,
+        moves: shortestPath.length - 1,
+        positionsExplored,
+    };
 }
 
 function encodePosition(coordinates) {
@@ -41,6 +49,8 @@ function explore({ path, move }) {
         knight.applyMove(move);
         path.push(encodePosition(knight.position));
     }
+
+    positionsExplored++;
 
     if (board.samePosition(knight.position, goal)) {
         return path;
