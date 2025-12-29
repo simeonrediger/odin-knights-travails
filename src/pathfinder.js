@@ -3,7 +3,7 @@ import Queue from './queue.js';
 let board;
 let knight;
 let goal;
-let visited = [];
+let visited = new Set();
 let tests = new Queue();
 
 function getShortestPath(chessBoard, knightPiece, start, end) {
@@ -11,18 +11,35 @@ function getShortestPath(chessBoard, knightPiece, start, end) {
     board = chessBoard;
     knight = knightPiece;
     goal = end;
-    const path = [start];
-    visited.push(start);
-    return explore({ path });
+    const encodedStart = encodePosition(start);
+    const path = [encodedStart];
+    visited.add(encodedStart);
+    return explore({ path: encodePath(path) });
+}
+
+function encodePosition(coordinates) {
+    return coordinates.join(',');
+}
+
+function decodePosition(coordinates) {
+    return coordinates.split(',').map(n => Number(n));
+}
+
+function encodePath(path) {
+    return path.join(';');
+}
+
+function decodePath(path) {
+    return path.split(';');
 }
 
 function explore({ path, move }) {
-    knight.position = [...path[path.length - 1]];
+    path = decodePath(path);
+    knight.position = decodePosition(path[path.length - 1]);
 
     if (move) {
         knight.applyMove(move);
-        path.push(knight.position);
-        visited.push(knight.position);
+        path.push(encodePosition(knight.position));
     }
 
     if (board.samePosition(knight.position, goal)) {
@@ -32,7 +49,7 @@ function explore({ path, move }) {
     const unexploredMoves = getUnexploredMoves();
 
     for (const unexploredMove of unexploredMoves) {
-        const test = { path: [...path], move: unexploredMove };
+        const test = { path: encodePath(path), move: unexploredMove };
         tests.enqueue(test);
     }
 
@@ -47,10 +64,9 @@ function getUnexploredMoves() {
             return false;
         }
 
-        const alreadyVisited = visited.some(visitedPosition =>
-            board.samePosition(visitedPosition, newPosition),
-        );
-
+        const encodedNewPosition = encodePosition(newPosition);
+        const alreadyVisited = visited.has(encodedNewPosition);
+        visited.add(encodedNewPosition);
         return !alreadyVisited;
     });
 }
