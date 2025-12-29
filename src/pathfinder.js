@@ -18,7 +18,7 @@ function run(chessBoard, knightPiece, start, end) {
 
     positionsExplored = 0;
     discovered = create2dBitmap(board);
-    discovered[start.x][start.y] = true;
+    discover(start);
 
     const firstSquareMatch = explore(start);
     const shortestPathString = getPathString(firstSquareMatch);
@@ -40,7 +40,7 @@ function explore(square) {
 
     for (const neighbor of getUndiscoveredNeighbors(square)) {
         neighbors.enqueue(neighbor);
-        discovered[neighbor.x][neighbor.y] = true;
+        discover(neighbor);
     }
 
     return neighbors.size > 0 ? explore(neighbors.dequeue()) : null;
@@ -99,6 +99,10 @@ function getMoveCount(square) {
     }
 
     return squareCount - 1;
+}
+
+function discover(square) {
+    discovered[square.x][square.y] = true;
 }
 
 function create2dBitmap(board) {
