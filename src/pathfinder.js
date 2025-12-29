@@ -23,8 +23,8 @@ function run(chessBoard, knightPiece, start, end) {
     const moveCount = getMoveCount(firstSquareMatch);
 
     return {
-        path: firstSquareMatch,
-        moves: firstSquareMatch.length - 1,
+        path: shortestPathString,
+        moves: moveCount,
         positionsExplored,
     };
 }
