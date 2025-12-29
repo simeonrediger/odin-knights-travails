@@ -29,7 +29,7 @@ function explore(path, move) {
 
     if (move) {
         knight.applyMove(move);
-        path.push(knight.position);
+        path.push([...knight.position]);
         visited.push(knight.position);
     }
 
