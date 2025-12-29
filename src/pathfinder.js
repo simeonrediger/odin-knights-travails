@@ -13,9 +13,8 @@ function run(chessBoard, knightPiece, start, end) {
     knight = knightPiece;
     goal = end;
     positionsExplored = 0;
-    const encodedStart = encodePosition(start);
-    const path = [encodedStart];
-    const shortestPath = explore({ path: encodePath(path) });
+    const path = [start];
+    const shortestPath = explore({ path });
 
     return {
         path: shortestPath,
@@ -24,32 +23,15 @@ function run(chessBoard, knightPiece, start, end) {
     };
 }
 
-function encodePosition(coordinates) {
-    return coordinates.join(',');
-}
-
-function decodePosition(coordinates) {
-    return coordinates.split(',').map(n => Number(n));
-}
-
-function encodePath(path) {
-    return path.join(';');
-}
-
-function decodePath(path) {
-    return path.split(';');
-}
-
 function explore({ path, move }) {
-    path = decodePath(path);
-    // knight.position = decodePosition(path[path.length - 1]);
+    // knight.position = path[path.length - 1];
 
     if (move) {
         // knight.applyMove(move);
-        path.push(encodePosition(knight.position));
+        path.push(knight.position);
     }
 
-    visited.add(encodedNewPosition);
+    visited.add(knight.position);
     positionsExplored++;
 
     if (board.samePosition(knight.position, goal)) {
@@ -59,7 +41,7 @@ function explore({ path, move }) {
     const unexploredMoves = getUnexploredMoves();
 
     for (const unexploredMove of unexploredMoves) {
-        const test = { path: encodePath(path), move: unexploredMove };
+        const test = { path, move: unexploredMove };
         tests.enqueue(test);
     }
 
@@ -74,8 +56,7 @@ function getUnexploredMoves() {
             return false;
         }
 
-        const encodedNewPosition = encodePosition(newPosition);
-        const alreadyVisited = visited.has(encodedNewPosition);
+        const alreadyVisited = visited.has(newPosition);
         return !alreadyVisited;
     });
 }
