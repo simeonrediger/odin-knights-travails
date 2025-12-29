@@ -1,4 +1,5 @@
 import Queue from './queue.js';
+import Square from './square.js';
 
 let board;
 let knight;
@@ -11,10 +12,10 @@ function run(chessBoard, knightPiece, start, end) {
     validatePositions(chessBoard, start, end);
     board = chessBoard;
     knight = knightPiece;
-    goal = end;
+    goal = new Square(...end);
     positionsExplored = 0;
-    const path = [start];
-    const shortestPath = explore({ path });
+    start = new Square(...start);
+    const shortestPath = explore(start);
 
     return {
         path: shortestPath,
@@ -23,14 +24,7 @@ function run(chessBoard, knightPiece, start, end) {
     };
 }
 
-function explore({ path, move }) {
-    // knight.position = path[path.length - 1];
-
-    if (move) {
-        // knight.applyMove(move);
-        // path.push(knight.position);
-    }
-
+function explore(square) {
     positionsExplored++;
 
     // if (board.samePosition(knight.position, goal)) {
