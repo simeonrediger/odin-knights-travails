@@ -6,7 +6,7 @@ let goal;
 let visited = new Set();
 let tests = new Queue();
 
-function getShortestPath(chessBoard, knightPiece, start, end) {
+function run(chessBoard, knightPiece, start, end) {
     validatePositions(chessBoard, start, end);
     board = chessBoard;
     knight = knightPiece;
@@ -80,7 +80,7 @@ function validatePositions(board, ...positions) {
 }
 
 const pathfinder = {
-    getShortestPath,
+    run,
 };
 
 export default pathfinder;

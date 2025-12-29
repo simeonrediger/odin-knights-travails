@@ -6,7 +6,7 @@ console.clear();
 
 const start = [0, 0];
 const end = [1, 2];
-const path = pathfinder.getShortestPath(board, knight, start, end);
+const path = pathfinder.run(board, knight, start, end);
 
 console.log('Path:', path);
 console.log('Moves:', path.length - 1);
