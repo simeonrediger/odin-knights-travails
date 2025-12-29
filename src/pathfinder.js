@@ -56,8 +56,8 @@ function getUnexploredMoves() {
             return false;
         }
 
-        const alreadyVisited = discovered.has(newPosition);
-        return !alreadyVisited;
+        const alreadyDiscovered = discovered.has(newPosition);
+        return !alreadyDiscovered;
     });
 }
 
