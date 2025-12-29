@@ -18,6 +18,7 @@ function run(chessBoard, knightPiece, start, end) {
 
     discovered = create2dBitmap(board);
     positionsExplored = 0;
+
     const firstSquareMatch = explore(start);
     const shortestPathString = getPathString(firstSquareMatch);
     const moveCount = getMoveCount(firstSquareMatch);
