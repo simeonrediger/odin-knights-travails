@@ -69,8 +69,8 @@ function generate2dBitmap(board) {
     return bitmap;
 }
 
-function validatePositions(board, ...positions) {
-    if (!board.contains(...positions)) {
+function validateSquares(board, ...squares) {
+    if (!board.contains(...squares)) {
         throw new RangeError(
             `Start and end ranks and files must be within [0, ${board.size})`,
         );
