@@ -16,7 +16,7 @@ function run(chessBoard, knightPiece, start, end) {
     validateSquare(start);
     validateSquare(goal);
 
-    discovered = generate2dBitmap(board);
+    discovered = create2dBitmap(board);
     positionsExplored = 0;
     const shortestPath = explore(start);
 
@@ -57,7 +57,7 @@ function getUndiscoveredNeighbors() {
     });
 }
 
-function generate2dBitmap(board) {
+function create2dBitmap(board) {
     return new Array(board.size).fill(new Array(board.size).fill(false));
 }
 
