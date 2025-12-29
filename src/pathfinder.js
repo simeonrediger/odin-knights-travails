@@ -17,11 +17,11 @@ function getShortestPath(chessBoard, knightPiece, start, end) {
 }
 
 function explore({ path, move }) {
-    knight.position = path[path.length - 1];
+    knight.position = [...path[path.length - 1]];
 
     if (move) {
         knight.applyMove(move);
-        path.push([...knight.position]);
+        path.push(knight.position);
         visited.push(knight.position);
     }
 
