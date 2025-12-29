@@ -34,9 +34,8 @@ function explore(square) {
     const undiscoveredNeighbors = getUndiscoveredNeighbors();
 
     for (const neighbor of undiscoveredNeighbors) {
-        const test = { path, move: unexploredMove };
-        tests.enqueue(test);
-        // discovered.add(knight.position);
+        tests.enqueue(neighbor);
+        discovered.add(neighbor);
     }
 
     return explore(tests.dequeue());
