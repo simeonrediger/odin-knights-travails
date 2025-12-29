@@ -34,7 +34,7 @@ function explore(square) {
         return square;
     }
 
-    const undiscoveredNeighbors = getUndiscoveredNeighbors();
+    const undiscoveredNeighbors = getUndiscoveredNeighbors(square);
 
     for (const neighbor of undiscoveredNeighbors) {
         neighbors.enqueue(neighbor);
@@ -44,15 +44,19 @@ function explore(square) {
     return explore(neighbors.dequeue());
 }
 
-function getUndiscoveredNeighbors() {
+function getUndiscoveredNeighbors(square) {
     return knight.moveset.filter(move => {
-        // const newPosition = knight.computePosition(move);
+        const neighbor = new Square(
+            square.x + move.x,
+            square.y + move.y,
+            square,
+        );
 
-        if (!board.contains(newPosition)) {
+        if (!board.contains(neighbor.x, neighbor.y)) {
             return false;
         }
 
-        const alreadyDiscovered = discovered.has(newPosition);
+        const alreadyDiscovered = discovered[neighbor.x][neighbor.y];
         return !alreadyDiscovered;
     });
 }
