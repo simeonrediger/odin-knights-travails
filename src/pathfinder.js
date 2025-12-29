@@ -34,9 +34,7 @@ function explore(square) {
         return square;
     }
 
-    const undiscoveredNeighbors = getUndiscoveredNeighbors(square);
-
-    for (const neighbor of undiscoveredNeighbors) {
+    for (const neighbor of getUndiscoveredNeighbors(square)) {
         neighbors.enqueue(neighbor);
         discovered[neighbor.x][neighbor.y] = true;
     }
