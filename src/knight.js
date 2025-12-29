@@ -1,4 +1,4 @@
-const position = [undefined, undefined];
+let position = [undefined, undefined];
 
 const moveset = Object.freeze([
     [1, 2],
@@ -30,7 +30,7 @@ const knight = {
     },
 
     set position(newPosition) {
-        [position[0], position[1]] = newPosition;
+        position = newPosition;
     },
 };
 
