@@ -31,9 +31,9 @@ function explore(square) {
         return square;
     }
 
-    const unexploredMoves = getUnexploredMoves();
+    const undiscoveredNeighbors = getUndiscoveredNeighbors();
 
-    for (const unexploredMove of unexploredMoves) {
+    for (const neighbor of undiscoveredNeighbors) {
         const test = { path, move: unexploredMove };
         tests.enqueue(test);
         // discovered.add(knight.position);
@@ -42,7 +42,7 @@ function explore(square) {
     return explore(tests.dequeue());
 }
 
-function getUnexploredMoves() {
+function getUndiscoveredNeighbors() {
     return knight.moveset.filter(move => {
         // const newPosition = knight.computePosition(move);
 
