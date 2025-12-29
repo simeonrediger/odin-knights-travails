@@ -6,14 +6,14 @@ function contains(...positions) {
     );
 }
 
-function samePosition(x1, y1, x2, y2) {
+function sameSquare(x1, y1, x2, y2) {
     return x1 === x2 && y1 === y2;
 }
 
 const board = {
     size,
     contains,
-    samePosition,
+    sameSquare,
 };
 
 export default board;
