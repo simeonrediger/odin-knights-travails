@@ -19,6 +19,7 @@ function run(chessBoard, knightPiece, start, end) {
     discovered = create2dBitmap(board);
     positionsExplored = 0;
     const firstSquareMatch = explore(start);
+    const shortestPathString = getPathString(firstSquareMatch);
 
     return {
         path: firstSquareMatch,
@@ -54,6 +55,25 @@ function getUndiscoveredNeighbors(square) {
         const alreadyDiscovered = discovered[neighbor.x]?.[neighbor.y];
         return inBounds && !alreadyDiscovered;
     });
+}
+
+function getPathString(square) {
+    if (!square) {
+        return null;
+    }
+
+    let string = '';
+
+    while (square) {
+        if (square.prev) {
+            string = ' -> ' + string;
+        }
+
+        string = `(${square.x}, ${square.y})` + string;
+        square = square.prev;
+    }
+
+    return string;
 }
 
 function create2dBitmap(board) {
