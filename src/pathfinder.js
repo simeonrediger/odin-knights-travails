@@ -5,12 +5,13 @@ let board;
 let knight;
 let goal;
 let positionsExplored;
-let discovered = new Set();
+let discovered;
 let neighbors = new Queue();
 
 function run(chessBoard, knightPiece, start, end) {
     validatePositions(chessBoard, start, end);
     board = chessBoard;
+    discovered = generate2dBitmap(board);
     knight = knightPiece;
     goal = new Square(...end);
     positionsExplored = 0;
@@ -52,6 +53,20 @@ function getUndiscoveredNeighbors() {
         const alreadyDiscovered = discovered.has(newPosition);
         return !alreadyDiscovered;
     });
+}
+
+function generate2dBitmap(board) {
+    const bitmap = new Map();
+
+    for (let x = 0; x < board.size; x++) {
+        bitmap.set(x, new Map());
+
+        for (let y = 0; y < board.size; y++) {
+            bitmap.get(x).set(y, false);
+        }
+    }
+
+    return bitmap;
 }
 
 function validatePositions(board, ...positions) {
