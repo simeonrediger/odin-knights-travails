@@ -38,7 +38,7 @@ function explore(square) {
 
     for (const neighbor of undiscoveredNeighbors) {
         neighbors.enqueue(neighbor);
-        discovered.add(neighbor);
+        discovered[neighbor.x][neighbor.y] = true;
     }
 
     return explore(neighbors.dequeue());
