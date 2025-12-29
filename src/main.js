@@ -4,8 +4,8 @@ import pathfinder from './pathfinder.js';
 
 console.clear();
 
-const start = [0, 0];
-const end = [7, 7];
+const start = { x: 0, y: 0 };
+const end = { x: 7, y: 7 };
 const { path, moves, positionsExplored } = pathfinder.run(
     board,
     knight,
