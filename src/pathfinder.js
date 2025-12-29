@@ -16,14 +16,6 @@ function getShortestPath(chessBoard, knightPiece, start, end) {
     return explore({ path });
 }
 
-function validatePositions(board, ...positions) {
-    if (!board.contains(...positions)) {
-        throw new RangeError(
-            `Start and end ranks and files must be within [0, ${board.size})`,
-        );
-    }
-}
-
 function explore({ path, move }) {
     knight.position = path[path.length - 1];
 
@@ -61,6 +53,14 @@ function getUnexploredMoves() {
 
         return !alreadyVisited;
     });
+}
+
+function validatePositions(board, ...positions) {
+    if (!board.contains(...positions)) {
+        throw new RangeError(
+            `Start and end ranks and files must be within [0, ${board.size})`,
+        );
+    }
 }
 
 const pathfinder = {
