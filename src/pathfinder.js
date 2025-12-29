@@ -20,6 +20,7 @@ function run(chessBoard, knightPiece, start, end) {
     positionsExplored = 0;
     const firstSquareMatch = explore(start);
     const shortestPathString = getPathString(firstSquareMatch);
+    const moveCount = getMoveCount(firstSquareMatch);
 
     return {
         path: firstSquareMatch,
@@ -74,6 +75,21 @@ function getPathString(square) {
     }
 
     return string;
+}
+
+function getMoveCount(square) {
+    if (!square) {
+        return null;
+    }
+
+    let squareCount = 0;
+
+    while (square) {
+        squareCount++;
+        square = square.prev;
+    }
+
+    return squareCount - 1;
 }
 
 function create2dBitmap(board) {
