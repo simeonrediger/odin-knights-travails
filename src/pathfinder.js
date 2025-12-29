@@ -110,7 +110,9 @@ function isDiscovered(square) {
 }
 
 function create2dBitmap(board) {
-    return new Array(board.size).fill(new Array(board.size).fill(false));
+    return new Array(board.size)
+        .fill()
+        .map(() => new Array(board.size).fill(false));
 }
 
 function validateSquare(square) {
