@@ -6,7 +6,7 @@ let knight;
 let goal;
 let positionsExplored;
 let discovered = new Set();
-let tests = new Queue();
+let neighbors = new Queue();
 
 function run(chessBoard, knightPiece, start, end) {
     validatePositions(chessBoard, start, end);
@@ -34,11 +34,11 @@ function explore(square) {
     const undiscoveredNeighbors = getUndiscoveredNeighbors();
 
     for (const neighbor of undiscoveredNeighbors) {
-        tests.enqueue(neighbor);
+        neighbors.enqueue(neighbor);
         discovered.add(neighbor);
     }
 
-    return explore(tests.dequeue());
+    return explore(neighbors.dequeue());
 }
 
 function getUndiscoveredNeighbors() {
