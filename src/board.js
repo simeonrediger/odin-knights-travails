@@ -2,16 +2,12 @@ const size = 8;
 
 function contains(...positions) {
     return positions.every(
-        ([rank, file]) => rank >= 0 && rank < size && file >= 0 && file < size,
+        ([x, y]) => x >= 0 && x < size && y >= 0 && y < size,
     );
 }
 
-function samePosition(...positions) {
-    const [firstRank, firstFile] = positions[0];
-
-    return positions.every(
-        ([rank, file]) => rank === firstRank && file == firstFile,
-    );
+function samePosition(x1, y1, x2, y2) {
+    return x1 === x2 && y1 === y2;
 }
 
 const board = {

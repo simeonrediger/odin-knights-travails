@@ -1,7 +1,7 @@
 class Square {
-    constructor(rank, file, prev = null) {
-        this.rank = rank;
-        this.file = file;
+    constructor(x, y, prev = null) {
+        this.x = x;
+        this.y = y;
         this.prev = prev;
     }
 }
