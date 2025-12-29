@@ -27,7 +27,7 @@ export default class Queue {
             return;
         }
 
-        const target = this.head;
+        const next = this.head;
         this.head = this.head.next;
         this.#size--;
 
@@ -35,6 +35,6 @@ export default class Queue {
             this.tail = this.head;
         }
 
-        return target;
+        return next;
     }
 }
