@@ -13,7 +13,7 @@ function getShortestPath(chessBoard, knightPiece, start, end) {
     goal = end;
     const path = [start];
     visited.push(start);
-    return explore(path);
+    return explore({ path });
 }
 
 function validatePositions(board, ...positions) {
@@ -24,7 +24,7 @@ function validatePositions(board, ...positions) {
     }
 }
 
-function explore(path, move) {
+function explore({ path, move }) {
     knight.position = path[path.length - 1];
 
     if (move) {
@@ -44,8 +44,7 @@ function explore(path, move) {
         tests.enqueue(test);
     }
 
-    ({ path, move } = tests.dequeue());
-    return explore(path, move);
+    return explore(tests.dequeue());
 }
 
 function getUnexploredMoves() {
