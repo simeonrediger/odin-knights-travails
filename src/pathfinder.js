@@ -13,7 +13,8 @@ function run(chessBoard, knightPiece, start, end) {
     knight = knightPiece;
     start = new Square(...start);
     goal = new Square(...end);
-    validateSquares(chessBoard, start, goal);
+    validateSquare(start);
+    validateSquare(goal);
     positionsExplored = 0;
     const shortestPath = explore(start);
 
@@ -68,8 +69,8 @@ function generate2dBitmap(board) {
     return bitmap;
 }
 
-function validateSquares(board, ...squares) {
-    if (!board.contains(...squares)) {
+function validateSquare(square) {
+    if (!board.contains(square.x, square.y)) {
         throw new RangeError(
             `Start and end ranks and files must be within [0, ${board.size})`,
         );
