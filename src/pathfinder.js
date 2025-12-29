@@ -18,11 +18,11 @@ function run(chessBoard, knightPiece, start, end) {
 
     discovered = create2dBitmap(board);
     positionsExplored = 0;
-    const shortestPath = explore(start);
+    const firstSquareMatch = explore(start);
 
     return {
-        path: shortestPath,
-        moves: shortestPath.length - 1,
+        path: firstSquareMatch,
+        moves: firstSquareMatch.length - 1,
         positionsExplored,
     };
 }
