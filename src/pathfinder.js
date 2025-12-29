@@ -9,13 +9,12 @@ let discovered;
 let neighbors = new Queue();
 
 function run(chessBoard, knightPiece, start, end) {
-    validatePositions(chessBoard, start, end);
     board = chessBoard;
-    discovered = generate2dBitmap(board);
     knight = knightPiece;
-    goal = new Square(...end);
-    positionsExplored = 0;
     start = new Square(...start);
+    goal = new Square(...end);
+    validateSquares(chessBoard, start, goal);
+    positionsExplored = 0;
     const shortestPath = explore(start);
 
     return {
