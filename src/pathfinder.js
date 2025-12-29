@@ -57,7 +57,7 @@ function getUndiscoveredNeighbors(square) {
         );
 
         const inBounds = board.contains(neighbor.x, neighbor.y);
-        const alreadyDiscovered = discovered[neighbor.x]?.[neighbor.y];
+        const alreadyDiscovered = isDiscovered(neighbor);
 
         if (inBounds && !alreadyDiscovered) {
             neighbors.push(neighbor);
@@ -103,6 +103,10 @@ function getMoveCount(square) {
 
 function discover(square) {
     discovered[square.x][square.y] = true;
+}
+
+function isDiscovered(square) {
+    return discovered[square.x]?.[square.y] ?? false;
 }
 
 function create2dBitmap(board) {
