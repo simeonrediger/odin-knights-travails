@@ -27,9 +27,9 @@ function run(chessBoard, knightPiece, start, end) {
 function explore(square) {
     positionsExplored++;
 
-    // if (board.samePosition(knight.position, goal)) {
-    //     return path;
-    // }
+    if (board.samePosition(square.x, square.y, goal.x, goal.y)) {
+        return square;
+    }
 
     const unexploredMoves = getUnexploredMoves();
 
