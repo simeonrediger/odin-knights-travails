@@ -28,21 +28,21 @@ function explore({ path, move }) {
 
     if (move) {
         // knight.applyMove(move);
-        path.push(knight.position);
+        // path.push(knight.position);
     }
 
     positionsExplored++;
 
-    if (board.samePosition(knight.position, goal)) {
-        return path;
-    }
+    // if (board.samePosition(knight.position, goal)) {
+    //     return path;
+    // }
 
     const unexploredMoves = getUnexploredMoves();
 
     for (const unexploredMove of unexploredMoves) {
         const test = { path, move: unexploredMove };
         tests.enqueue(test);
-        discovered.add(knight.position);
+        // discovered.add(knight.position);
     }
 
     return explore(tests.dequeue());
@@ -50,7 +50,7 @@ function explore({ path, move }) {
 
 function getUnexploredMoves() {
     return knight.moveset.filter(move => {
-        const newPosition = knight.computePosition(move);
+        // const newPosition = knight.computePosition(move);
 
         if (!board.contains(newPosition)) {
             return false;
