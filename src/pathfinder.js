@@ -73,12 +73,12 @@ function getPathString(square) {
     let string = '';
 
     while (square) {
-        if (square.prev) {
-            string = ' -> ' + string;
-        }
-
         string = `(${square.x}, ${square.y})` + string;
         square = square.prev;
+
+        if (square) {
+            string = ' -> ' + string;
+        }
     }
 
     return string;
