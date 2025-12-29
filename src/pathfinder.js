@@ -51,7 +51,7 @@ function getUndiscoveredNeighbors(square) {
         );
 
         const inBounds = board.contains(neighbor.x, neighbor.y);
-        const alreadyDiscovered = discovered[neighbor.x][neighbor.y];
+        const alreadyDiscovered = discovered[neighbor.x]?.[neighbor.y];
         return inBounds && !alreadyDiscovered;
     });
 }
