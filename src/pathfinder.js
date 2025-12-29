@@ -4,7 +4,7 @@ let board;
 let knight;
 let goal;
 let positionsExplored;
-let visited = new Set();
+let discovered = new Set();
 let tests = new Queue();
 
 function run(chessBoard, knightPiece, start, end) {
@@ -31,7 +31,7 @@ function explore({ path, move }) {
         path.push(knight.position);
     }
 
-    visited.add(knight.position);
+    discovered.add(knight.position);
     positionsExplored++;
 
     if (board.samePosition(knight.position, goal)) {
@@ -56,7 +56,7 @@ function getUnexploredMoves() {
             return false;
         }
 
-        const alreadyVisited = visited.has(newPosition);
+        const alreadyVisited = discovered.has(newPosition);
         return !alreadyVisited;
     });
 }
