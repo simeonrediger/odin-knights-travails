@@ -15,7 +15,6 @@ function run(chessBoard, knightPiece, start, end) {
     positionsExplored = 0;
     const encodedStart = encodePosition(start);
     const path = [encodedStart];
-    visited.add(encodedStart);
     const shortestPath = explore({ path: encodePath(path) });
 
     return {
@@ -50,6 +49,7 @@ function explore({ path, move }) {
         path.push(encodePosition(knight.position));
     }
 
+    visited.add(encodedNewPosition);
     positionsExplored++;
 
     if (board.samePosition(knight.position, goal)) {
@@ -76,7 +76,6 @@ function getUnexploredMoves() {
 
         const encodedNewPosition = encodePosition(newPosition);
         const alreadyVisited = visited.has(encodedNewPosition);
-        visited.add(encodedNewPosition);
         return !alreadyVisited;
     });
 }
