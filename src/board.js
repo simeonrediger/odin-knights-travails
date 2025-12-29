@@ -1,7 +1,7 @@
 const size = 8;
 
-function contains(x, y) {
-    return x >= 0 && x < size && y >= 0 && y < size;
+function contains(square) {
+    return square.x >= 0 && square.x < size && square.y >= 0 && square.y < size;
 }
 
 function sameSquare(square1, square2) {

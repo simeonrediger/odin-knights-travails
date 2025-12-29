@@ -56,7 +56,7 @@ function getUndiscoveredNeighbors(square) {
             square,
         );
 
-        const inBounds = board.contains(neighbor.x, neighbor.y);
+        const inBounds = board.contains(neighbor);
         const alreadyDiscovered = isDiscovered(neighbor);
 
         if (inBounds && !alreadyDiscovered) {
@@ -114,7 +114,7 @@ function create2dBitmap(board) {
 }
 
 function validateSquare(square) {
-    if (!board.contains(square.x, square.y)) {
+    if (!board.contains(square)) {
         throw new RangeError(
             `Start and end ranks and files must be within [0, ${board.size})`,
         );
