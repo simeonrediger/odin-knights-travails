@@ -45,7 +45,9 @@ function explore(square) {
 }
 
 function getUndiscoveredNeighbors(square) {
-    return knight.moveset.filter(move => {
+    const neighbors = [];
+
+    for (const move of knight.moveset) {
         const neighbor = new Square(
             square.x + move.x,
             square.y + move.y,
@@ -54,8 +56,13 @@ function getUndiscoveredNeighbors(square) {
 
         const inBounds = board.contains(neighbor.x, neighbor.y);
         const alreadyDiscovered = discovered[neighbor.x]?.[neighbor.y];
-        return inBounds && !alreadyDiscovered;
-    });
+
+        if (inBounds && !alreadyDiscovered) {
+            neighbors.push(neighbor);
+        }
+    }
+
+    return neighbors;
 }
 
 function getPathString(square) {
