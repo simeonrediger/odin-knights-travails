@@ -5,7 +5,7 @@ function contains(square) {
 }
 
 function sameSquare(square1, square2) {
-    return square1.x === square2.y && square1.x === square2.y;
+    return square1.x === square2.x && square1.y === square2.y;
 }
 
 const board = {
