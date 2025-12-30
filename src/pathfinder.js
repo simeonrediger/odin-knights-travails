@@ -3,7 +3,7 @@ import Square from './square.js';
 
 let board;
 let knight;
-let positionsExplored;
+let squaresExplored;
 let discovered;
 let neighbors = new Queue();
 
@@ -15,7 +15,7 @@ function run(chessBoard, knightPiece, start, end) {
     validateSquare(start);
     validateSquare(goal);
 
-    positionsExplored = 0;
+    squaresExplored = 0;
     discovered = create2dBitmap(board);
 
     const retraceableSquare = findRetraceableSquare(start, goal);
@@ -25,7 +25,7 @@ function run(chessBoard, knightPiece, start, end) {
     return {
         path: shortestPathString,
         moves: moveCount,
-        positionsExplored,
+        squaresExplored,
     };
 }
 
@@ -35,7 +35,7 @@ function findRetraceableSquare(start, goal) {
     discover(square);
 
     while (square) {
-        positionsExplored++;
+        squaresExplored++;
 
         if (board.sameSquare(square, goal)) {
             return square;
