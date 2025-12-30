@@ -20,7 +20,7 @@ function run(chessBoard, knightPiece, start, end) {
     discovered = create2dBitmap(board);
     discover(start);
 
-    const firstSquareMatch = search(start, goal);
+    const firstSquareMatch = findRetraceableSquare(start, goal);
     const shortestPathString = getPathString(firstSquareMatch);
     const moveCount = getMoveCount(firstSquareMatch);
 
@@ -32,8 +32,7 @@ function run(chessBoard, knightPiece, start, end) {
 }
 
 // Searches breadth-first for goal square from start square
-// Returns a retraceable vertex (square) if reachable; else null
-function search(start, goal) {
+function findRetraceableSquare(start, goal) {
     let square = start;
 
     while (square) {
