@@ -10,6 +10,7 @@ let neighbors;
 function run(chessBoard, knightPiece, start, end) {
     board = chessBoard;
     knight = knightPiece;
+
     start = new Square(start.x, start.y);
     const goal = new Square(end.x, end.y);
     [start, goal].forEach(validateSquare);
