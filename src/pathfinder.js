@@ -16,7 +16,7 @@ function run(chessBoard, knightPiece, start, end) {
     [start, goal].forEach(validateSquare);
 
     squaresExplored = 0;
-    discovered = create2dBitmap(board);
+    discovered = create2dBitmap(board.size);
     neighbors = new Queue();
 
     const retraceableSquare = findRetraceableSquare(start, goal);
@@ -113,10 +113,8 @@ function isDiscovered(square) {
     return discovered[square.x]?.[square.y] ?? false;
 }
 
-function create2dBitmap(board) {
-    return new Array(board.size)
-        .fill()
-        .map(() => new Array(board.size).fill(false));
+function create2dBitmap(size) {
+    return new Array(size).fill().map(() => new Array(size).fill(false));
 }
 
 function validateSquare(square) {
