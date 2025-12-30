@@ -3,7 +3,6 @@ import Square from './square.js';
 
 let board;
 let knight;
-let goal;
 let positionsExplored;
 let discovered;
 let neighbors = new Queue();
@@ -12,7 +11,7 @@ function run(chessBoard, knightPiece, start, end) {
     board = chessBoard;
     knight = knightPiece;
     start = new Square(start.x, start.y);
-    goal = new Square(end.x, end.y);
+    const goal = new Square(end.x, end.y);
     validateSquare(start);
     validateSquare(goal);
 
