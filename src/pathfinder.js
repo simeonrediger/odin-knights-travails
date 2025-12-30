@@ -20,9 +20,9 @@ function run(chessBoard, knightPiece, start, end) {
     discovered = create2dBitmap(board);
     discover(start);
 
-    const firstSquareMatch = findRetraceableSquare(start, goal);
-    const shortestPathString = getPathString(firstSquareMatch);
-    const moveCount = getMoveCount(firstSquareMatch);
+    const retraceableSquare = findRetraceableSquare(start, goal);
+    const shortestPathString = getPathString(retraceableSquare);
+    const moveCount = getMoveCount(retraceableSquare);
 
     return {
         path: shortestPathString,
