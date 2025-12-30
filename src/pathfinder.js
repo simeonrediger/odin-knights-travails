@@ -5,7 +5,7 @@ let board;
 let knight;
 let squaresExplored;
 let discovered;
-let neighbors = new Queue();
+let neighbors;
 
 function run(chessBoard, knightPiece, start, end) {
     board = chessBoard;
@@ -17,6 +17,7 @@ function run(chessBoard, knightPiece, start, end) {
 
     squaresExplored = 0;
     discovered = create2dBitmap(board);
+    neighbors = new Queue();
 
     const retraceableSquare = findRetraceableSquare(start, goal);
     const shortestPathString = getPathString(retraceableSquare);
