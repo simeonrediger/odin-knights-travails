@@ -20,7 +20,7 @@ function run(chessBoard, knightPiece, start, end) {
     discovered = create2dBitmap(board);
     discover(start);
 
-    const firstSquareMatch = explore(start);
+    const firstSquareMatch = search(start, goal);
     const shortestPathString = getPathString(firstSquareMatch);
     const moveCount = getMoveCount(firstSquareMatch);
 
@@ -31,19 +31,27 @@ function run(chessBoard, knightPiece, start, end) {
     };
 }
 
-function explore(square) {
-    positionsExplored++;
+// Searches breadth-first for goal square from start square
+// Returns a retraceable vertex (square) if reachable; else null
+function search(start, goal) {
+    let square = start;
 
-    if (board.sameSquare(square, goal)) {
-        return square;
+    while (square) {
+        positionsExplored++;
+
+        if (board.sameSquare(square, goal)) {
+            return square;
+        }
+
+        for (const neighbor of getUndiscoveredNeighbors(square)) {
+            neighbors.enqueue(neighbor);
+            discover(neighbor);
+        }
+
+        square = neighbors.dequeue();
     }
 
-    for (const neighbor of getUndiscoveredNeighbors(square)) {
-        neighbors.enqueue(neighbor);
-        discover(neighbor);
-    }
-
-    return neighbors.size > 0 ? explore(neighbors.dequeue()) : null;
+    return null;
 }
 
 function getUndiscoveredNeighbors(square) {
