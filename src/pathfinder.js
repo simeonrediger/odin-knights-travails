@@ -12,8 +12,7 @@ function run(chessBoard, knightPiece, start, end) {
     knight = knightPiece;
     start = new Square(start.x, start.y);
     const goal = new Square(end.x, end.y);
-    validateSquare(start);
-    validateSquare(goal);
+    [start, goal].forEach(validateSquare);
 
     squaresExplored = 0;
     discovered = create2dBitmap(board);
